@@ -1,0 +1,2368 @@
+{
+  "meta": {
+    "RUNS": 3,
+    "CPU_THROTTLE": 4,
+    "PDF_URL": "/heavy-designer-portfolio-50p.pdf",
+    "PAINT_TIMEOUT_MS": 60000
+  },
+  "results": [
+    {
+      "run": 1,
+      "name": "Basic eager PDF.js",
+      "shortName": "basic",
+      "url": "http://127.0.0.1:3124/pdf-bench/basic?url=%2Fheavy-designer-portfolio-50p.pdf",
+      "firstCanvasPaint": 4023,
+      "paintTimedOut": false,
+      "initialPerf": {
+        "duration": 7031,
+        "blocking": 478,
+        "longTasks": 13,
+        "maxLongTask": 158,
+        "p95FrameGap": 117,
+        "maxFrameGap": 234,
+        "over32": 31,
+        "over50": 26,
+        "fcp": 348,
+        "domContentLoaded": 175,
+        "loadEventEnd": 512
+      },
+      "initial": {
+        "canvasCount": 50,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 49,
+        "createdCanvasCount": 50,
+        "totalCanvasPixels": 337500000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 330750000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 1350000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 1323000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 152,
+        "scrollHeight": 1000,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": null
+      },
+      "scroll": {
+        "duration": 4018,
+        "blocking": 0,
+        "longTasks": 0,
+        "p95FrameGap": 9,
+        "maxFrameGap": 9,
+        "over32": 0,
+        "over50": 0,
+        "peakCanvasPixels": 337500000,
+        "peakCanvasBytes": 1350000000
+      },
+      "afterScroll": {
+        "canvasCount": 50,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 49,
+        "createdCanvasCount": 50,
+        "totalCanvasPixels": 337500000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 330750000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 1350000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 1323000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 152,
+        "scrollHeight": 1000,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": null
+      },
+      "processMemory": {
+        "baseline": {
+          "rootPid": 76073,
+          "processCount": 6,
+          "rssBytes": 746864640,
+          "processes": [
+            {
+              "pid": 76073,
+              "ppid": 76068,
+              "rssBytes": 209600512,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76112,
+              "ppid": 76073,
+              "rssBytes": 121716736,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76111,
+              "ppid": 76073,
+              "rssBytes": 100040704,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76107,
+              "ppid": 76073,
+              "rssBytes": 80625664,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76105,
+              "ppid": 76073,
+              "rssBytes": 95322112,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76104,
+              "ppid": 76073,
+              "rssBytes": 139558912,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "initial": {
+          "rootPid": 76073,
+          "processCount": 7,
+          "rssBytes": 2215346176,
+          "processes": [
+            {
+              "pid": 76073,
+              "ppid": 76068,
+              "rssBytes": 213041152,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76118,
+              "ppid": 76073,
+              "rssBytes": 80887808,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76112,
+              "ppid": 76073,
+              "rssBytes": 106528768,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76111,
+              "ppid": 76073,
+              "rssBytes": 1542438912,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76107,
+              "ppid": 76073,
+              "rssBytes": 65142784,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76105,
+              "ppid": 76073,
+              "rssBytes": 89178112,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76104,
+              "ppid": 76073,
+              "rssBytes": 118128640,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "afterScroll": {
+          "rootPid": 76073,
+          "processCount": 7,
+          "rssBytes": 2183512064,
+          "processes": [
+            {
+              "pid": 76073,
+              "ppid": 76068,
+              "rssBytes": 218480640,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76118,
+              "ppid": 76073,
+              "rssBytes": 82149376,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76112,
+              "ppid": 76073,
+              "rssBytes": 107315200,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76111,
+              "ppid": 76073,
+              "rssBytes": 1507491840,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76107,
+              "ppid": 76073,
+              "rssBytes": 65159168,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76105,
+              "ppid": 76073,
+              "rssBytes": 89227264,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76104,
+              "ppid": 76073,
+              "rssBytes": 113688576,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        }
+      },
+      "pageMetrics": {
+        "initial": {
+          "Timestamp": 733768.562431,
+          "Documents": 1,
+          "Frames": 1,
+          "JSEventListeners": 309,
+          "Nodes": 228,
+          "LayoutCount": 17,
+          "RecalcStyleCount": 12,
+          "LayoutDuration": 0.121753,
+          "RecalcStyleDuration": 0.038945,
+          "ScriptDuration": 0.755422,
+          "TaskDuration": 2.633712,
+          "JSHeapUsedSize": 7659088,
+          "JSHeapTotalSize": 11272192
+        },
+        "afterScroll": {
+          "Timestamp": 733772.630483,
+          "Documents": 1,
+          "Frames": 1,
+          "JSEventListeners": 309,
+          "Nodes": 228,
+          "LayoutCount": 17,
+          "RecalcStyleCount": 12,
+          "LayoutDuration": 0.121753,
+          "RecalcStyleDuration": 0.038945,
+          "ScriptDuration": 0.782749,
+          "TaskDuration": 2.811095,
+          "JSHeapUsedSize": 7939200,
+          "JSHeapTotalSize": 11272192
+        }
+      },
+      "errors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ]
+    },
+    {
+      "run": 2,
+      "name": "Basic eager PDF.js",
+      "shortName": "basic",
+      "url": "http://127.0.0.1:3124/pdf-bench/basic?url=%2Fheavy-designer-portfolio-50p.pdf",
+      "firstCanvasPaint": 3456,
+      "paintTimedOut": false,
+      "initialPerf": {
+        "duration": 6463,
+        "blocking": 390,
+        "longTasks": 14,
+        "maxLongTask": 151,
+        "p95FrameGap": 108,
+        "maxFrameGap": 224,
+        "over32": 26,
+        "over50": 24,
+        "fcp": 208,
+        "domContentLoaded": 80,
+        "loadEventEnd": 301
+      },
+      "initial": {
+        "canvasCount": 50,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 49,
+        "createdCanvasCount": 50,
+        "totalCanvasPixels": 337500000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 330750000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 1350000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 1323000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 152,
+        "scrollHeight": 1000,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": null
+      },
+      "scroll": {
+        "duration": 4015,
+        "blocking": 0,
+        "longTasks": 0,
+        "p95FrameGap": 9,
+        "maxFrameGap": 9,
+        "over32": 0,
+        "over50": 0,
+        "peakCanvasPixels": 337500000,
+        "peakCanvasBytes": 1350000000
+      },
+      "afterScroll": {
+        "canvasCount": 50,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 49,
+        "createdCanvasCount": 50,
+        "totalCanvasPixels": 337500000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 330750000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 1350000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 1323000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 152,
+        "scrollHeight": 1000,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": null
+      },
+      "processMemory": {
+        "baseline": {
+          "rootPid": 76172,
+          "processCount": 6,
+          "rssBytes": 743161856,
+          "processes": [
+            {
+              "pid": 76172,
+              "ppid": 76068,
+              "rssBytes": 208879616,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76218,
+              "ppid": 76172,
+              "rssBytes": 121864192,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76217,
+              "ppid": 76172,
+              "rssBytes": 99942400,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76207,
+              "ppid": 76172,
+              "rssBytes": 80658432,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76206,
+              "ppid": 76172,
+              "rssBytes": 97320960,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76205,
+              "ppid": 76172,
+              "rssBytes": 134496256,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "initial": {
+          "rootPid": 76172,
+          "processCount": 7,
+          "rssBytes": 2332966912,
+          "processes": [
+            {
+              "pid": 76172,
+              "ppid": 76068,
+              "rssBytes": 227377152,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76229,
+              "ppid": 76172,
+              "rssBytes": 82083840,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76218,
+              "ppid": 76172,
+              "rssBytes": 107200512,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76217,
+              "ppid": 76172,
+              "rssBytes": 1607761920,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76207,
+              "ppid": 76172,
+              "rssBytes": 71188480,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76206,
+              "ppid": 76172,
+              "rssBytes": 101892096,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76205,
+              "ppid": 76172,
+              "rssBytes": 135462912,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "afterScroll": {
+          "rootPid": 76172,
+          "processCount": 7,
+          "rssBytes": 2331443200,
+          "processes": [
+            {
+              "pid": 76172,
+              "ppid": 76068,
+              "rssBytes": 227835904,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76229,
+              "ppid": 76172,
+              "rssBytes": 83165184,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76218,
+              "ppid": 76172,
+              "rssBytes": 107823104,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76217,
+              "ppid": 76172,
+              "rssBytes": 1608450048,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76207,
+              "ppid": 76172,
+              "rssBytes": 71204864,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76206,
+              "ppid": 76172,
+              "rssBytes": 101924864,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76205,
+              "ppid": 76172,
+              "rssBytes": 131039232,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        }
+      },
+      "pageMetrics": {
+        "initial": {
+          "Timestamp": 733780.456035,
+          "Documents": 1,
+          "Frames": 1,
+          "JSEventListeners": 307,
+          "Nodes": 228,
+          "LayoutCount": 15,
+          "RecalcStyleCount": 11,
+          "LayoutDuration": 0.100229,
+          "RecalcStyleDuration": 0.012703,
+          "ScriptDuration": 0.56472,
+          "TaskDuration": 2.102307,
+          "JSHeapUsedSize": 7516792,
+          "JSHeapTotalSize": 11010048
+        },
+        "afterScroll": {
+          "Timestamp": 733784.509066,
+          "Documents": 1,
+          "Frames": 1,
+          "JSEventListeners": 307,
+          "Nodes": 228,
+          "LayoutCount": 15,
+          "RecalcStyleCount": 11,
+          "LayoutDuration": 0.100229,
+          "RecalcStyleDuration": 0.012703,
+          "ScriptDuration": 0.590237,
+          "TaskDuration": 2.260703,
+          "JSHeapUsedSize": 7800136,
+          "JSHeapTotalSize": 11272192
+        }
+      },
+      "errors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ]
+    },
+    {
+      "run": 3,
+      "name": "Basic eager PDF.js",
+      "shortName": "basic",
+      "url": "http://127.0.0.1:3124/pdf-bench/basic?url=%2Fheavy-designer-portfolio-50p.pdf",
+      "firstCanvasPaint": 3272,
+      "paintTimedOut": false,
+      "initialPerf": {
+        "duration": 6277,
+        "blocking": 463,
+        "longTasks": 11,
+        "maxLongTask": 159,
+        "p95FrameGap": 100,
+        "maxFrameGap": 241,
+        "over32": 25,
+        "over50": 22,
+        "fcp": 216,
+        "domContentLoaded": 83,
+        "loadEventEnd": 306
+      },
+      "initial": {
+        "canvasCount": 50,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 49,
+        "createdCanvasCount": 50,
+        "totalCanvasPixels": 337500000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 330750000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 1350000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 1323000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 152,
+        "scrollHeight": 1000,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": null
+      },
+      "scroll": {
+        "duration": 4019,
+        "blocking": 0,
+        "longTasks": 0,
+        "p95FrameGap": 9,
+        "maxFrameGap": 9,
+        "over32": 0,
+        "over50": 0,
+        "peakCanvasPixels": 337500000,
+        "peakCanvasBytes": 1350000000
+      },
+      "afterScroll": {
+        "canvasCount": 50,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 49,
+        "createdCanvasCount": 50,
+        "totalCanvasPixels": 337500000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 330750000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 1350000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 1323000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 152,
+        "scrollHeight": 1000,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": null
+      },
+      "processMemory": {
+        "baseline": {
+          "rootPid": 76269,
+          "processCount": 6,
+          "rssBytes": 740261888,
+          "processes": [
+            {
+              "pid": 76269,
+              "ppid": 76068,
+              "rssBytes": 207683584,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76304,
+              "ppid": 76269,
+              "rssBytes": 121700352,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76303,
+              "ppid": 76269,
+              "rssBytes": 100089856,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76301,
+              "ppid": 76269,
+              "rssBytes": 80773120,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76300,
+              "ppid": 76269,
+              "rssBytes": 95059968,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76299,
+              "ppid": 76269,
+              "rssBytes": 134955008,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "initial": {
+          "rootPid": 76269,
+          "processCount": 7,
+          "rssBytes": 2493644800,
+          "processes": [
+            {
+              "pid": 76269,
+              "ppid": 76068,
+              "rssBytes": 235372544,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76312,
+              "ppid": 76269,
+              "rssBytes": 100057088,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76304,
+              "ppid": 76269,
+              "rssBytes": 122028032,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76303,
+              "ppid": 76269,
+              "rssBytes": 1708212224,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76301,
+              "ppid": 76269,
+              "rssBytes": 81412096,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76300,
+              "ppid": 76269,
+              "rssBytes": 104185856,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76299,
+              "ppid": 76269,
+              "rssBytes": 142376960,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "afterScroll": {
+          "rootPid": 76269,
+          "processCount": 7,
+          "rssBytes": 2490138624,
+          "processes": [
+            {
+              "pid": 76269,
+              "ppid": 76068,
+              "rssBytes": 235782144,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76312,
+              "ppid": 76269,
+              "rssBytes": 100106240,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76304,
+              "ppid": 76269,
+              "rssBytes": 122109952,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76303,
+              "ppid": 76269,
+              "rssBytes": 1708851200,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76301,
+              "ppid": 76269,
+              "rssBytes": 81412096,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76300,
+              "ppid": 76269,
+              "rssBytes": 104218624,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76299,
+              "ppid": 76269,
+              "rssBytes": 137658368,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        }
+      },
+      "pageMetrics": {
+        "initial": {
+          "Timestamp": 733791.840081,
+          "Documents": 1,
+          "Frames": 1,
+          "JSEventListeners": 305,
+          "Nodes": 228,
+          "LayoutCount": 15,
+          "RecalcStyleCount": 11,
+          "LayoutDuration": 0.102928,
+          "RecalcStyleDuration": 0.010406,
+          "ScriptDuration": 0.55667,
+          "TaskDuration": 2.076103,
+          "JSHeapUsedSize": 8046820,
+          "JSHeapTotalSize": 11272192
+        },
+        "afterScroll": {
+          "Timestamp": 733795.897489,
+          "Documents": 1,
+          "Frames": 1,
+          "JSEventListeners": 307,
+          "Nodes": 228,
+          "LayoutCount": 16,
+          "RecalcStyleCount": 11,
+          "LayoutDuration": 0.103471,
+          "RecalcStyleDuration": 0.010406,
+          "ScriptDuration": 0.576878,
+          "TaskDuration": 2.224856,
+          "JSHeapUsedSize": 8346496,
+          "JSHeapTotalSize": 11534336
+        }
+      },
+      "errors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ]
+    },
+    {
+      "run": 1,
+      "name": "Cleanup Only PDF.js",
+      "shortName": "cleanup-only",
+      "url": "http://127.0.0.1:3124/pdf-bench/cleanup-only?url=%2Fheavy-designer-portfolio-50p.pdf",
+      "firstCanvasPaint": 3175,
+      "paintTimedOut": false,
+      "initialPerf": {
+        "duration": 6182,
+        "blocking": 479,
+        "longTasks": 11,
+        "maxLongTask": 176,
+        "p95FrameGap": 41,
+        "maxFrameGap": 242,
+        "over32": 23,
+        "over50": 21,
+        "fcp": 248,
+        "domContentLoaded": 223,
+        "loadEventEnd": 354
+      },
+      "initial": {
+        "canvasCount": 50,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 49,
+        "createdCanvasCount": 50,
+        "totalCanvasPixels": 337500000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 330750000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 1350000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 1323000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 152,
+        "scrollHeight": 64430,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": null
+      },
+      "scroll": {
+        "duration": 4303,
+        "blocking": 150,
+        "longTasks": 7,
+        "p95FrameGap": 33,
+        "maxFrameGap": 134,
+        "over32": 22,
+        "over50": 6,
+        "peakCanvasPixels": 337500000,
+        "peakCanvasBytes": 1350000000
+      },
+      "afterScroll": {
+        "canvasCount": 50,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 49,
+        "createdCanvasCount": 50,
+        "totalCanvasPixels": 337500000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 330750000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 1350000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 1323000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 152,
+        "scrollHeight": 64430,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": null
+      },
+      "processMemory": {
+        "baseline": {
+          "rootPid": 76388,
+          "processCount": 6,
+          "rssBytes": 742391808,
+          "processes": [
+            {
+              "pid": 76388,
+              "ppid": 76068,
+              "rssBytes": 208568320,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76399,
+              "ppid": 76388,
+              "rssBytes": 121782272,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76398,
+              "ppid": 76388,
+              "rssBytes": 100073472,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76394,
+              "ppid": 76388,
+              "rssBytes": 80691200,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76393,
+              "ppid": 76388,
+              "rssBytes": 96321536,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76392,
+              "ppid": 76388,
+              "rssBytes": 134955008,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "initial": {
+          "rootPid": 76388,
+          "processCount": 7,
+          "rssBytes": 2544828416,
+          "processes": [
+            {
+              "pid": 76388,
+              "ppid": 76068,
+              "rssBytes": 230850560,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76405,
+              "ppid": 76388,
+              "rssBytes": 99958784,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76399,
+              "ppid": 76388,
+              "rssBytes": 122126336,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76398,
+              "ppid": 76388,
+              "rssBytes": 1765343232,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76394,
+              "ppid": 76388,
+              "rssBytes": 81346560,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76393,
+              "ppid": 76388,
+              "rssBytes": 103432192,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76392,
+              "ppid": 76388,
+              "rssBytes": 141770752,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "afterScroll": {
+          "rootPid": 76388,
+          "processCount": 7,
+          "rssBytes": 3010838528,
+          "processes": [
+            {
+              "pid": 76388,
+              "ppid": 76068,
+              "rssBytes": 208486400,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76405,
+              "ppid": 76388,
+              "rssBytes": 80429056,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76399,
+              "ppid": 76388,
+              "rssBytes": 104120320,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76398,
+              "ppid": 76388,
+              "rssBytes": 2346958848,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76394,
+              "ppid": 76388,
+              "rssBytes": 63881216,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76393,
+              "ppid": 76388,
+              "rssBytes": 89112576,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76392,
+              "ppid": 76388,
+              "rssBytes": 117850112,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        }
+      },
+      "pageMetrics": {
+        "initial": {
+          "Timestamp": 733803.098733,
+          "Documents": 1,
+          "Frames": 1,
+          "JSEventListeners": 307,
+          "Nodes": 228,
+          "LayoutCount": 16,
+          "RecalcStyleCount": 13,
+          "LayoutDuration": 0.117718,
+          "RecalcStyleDuration": 0.014449,
+          "ScriptDuration": 0.502826,
+          "TaskDuration": 2.048767,
+          "JSHeapUsedSize": 7456004,
+          "JSHeapTotalSize": 13369344
+        },
+        "afterScroll": {
+          "Timestamp": 733807.441155,
+          "Documents": 1,
+          "Frames": 1,
+          "JSEventListeners": 337,
+          "Nodes": 228,
+          "LayoutCount": 29,
+          "RecalcStyleCount": 15,
+          "LayoutDuration": 0.122774,
+          "RecalcStyleDuration": 0.017488,
+          "ScriptDuration": 0.547927,
+          "TaskDuration": 3.599586,
+          "JSHeapUsedSize": 8038108,
+          "JSHeapTotalSize": 13631488
+        }
+      },
+      "errors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ]
+    },
+    {
+      "run": 2,
+      "name": "Cleanup Only PDF.js",
+      "shortName": "cleanup-only",
+      "url": "http://127.0.0.1:3124/pdf-bench/cleanup-only?url=%2Fheavy-designer-portfolio-50p.pdf",
+      "firstCanvasPaint": 3046,
+      "paintTimedOut": false,
+      "initialPerf": {
+        "duration": 6052,
+        "blocking": 441,
+        "longTasks": 9,
+        "maxLongTask": 173,
+        "p95FrameGap": 75,
+        "maxFrameGap": 283,
+        "over32": 23,
+        "over50": 22,
+        "fcp": 244,
+        "domContentLoaded": 98,
+        "loadEventEnd": 300
+      },
+      "initial": {
+        "canvasCount": 50,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 49,
+        "createdCanvasCount": 50,
+        "totalCanvasPixels": 337500000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 330750000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 1350000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 1323000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 152,
+        "scrollHeight": 64430,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": null
+      },
+      "scroll": {
+        "duration": 4344,
+        "blocking": 187,
+        "longTasks": 9,
+        "p95FrameGap": 33,
+        "maxFrameGap": 84,
+        "over32": 22,
+        "over50": 8,
+        "peakCanvasPixels": 337500000,
+        "peakCanvasBytes": 1350000000
+      },
+      "afterScroll": {
+        "canvasCount": 50,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 49,
+        "createdCanvasCount": 50,
+        "totalCanvasPixels": 337500000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 330750000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 1350000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 1323000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 152,
+        "scrollHeight": 64430,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": null
+      },
+      "processMemory": {
+        "baseline": {
+          "rootPid": 76446,
+          "processCount": 7,
+          "rssBytes": 740065280,
+          "processes": [
+            {
+              "pid": 76446,
+              "ppid": 76068,
+              "rssBytes": 209616896,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76488,
+              "ppid": 76446,
+              "rssBytes": 121569280,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76487,
+              "ppid": 76446,
+              "rssBytes": 100139008,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76486,
+              "ppid": 76446,
+              "rssBytes": 0,
+              "command": "(Google Chrome He)"
+            },
+            {
+              "pid": 76485,
+              "ppid": 76446,
+              "rssBytes": 80723968,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76480,
+              "ppid": 76446,
+              "rssBytes": 92897280,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76479,
+              "ppid": 76446,
+              "rssBytes": 135118848,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "initial": {
+          "rootPid": 76446,
+          "processCount": 7,
+          "rssBytes": 2551267328,
+          "processes": [
+            {
+              "pid": 76446,
+              "ppid": 76068,
+              "rssBytes": 235732992,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76494,
+              "ppid": 76446,
+              "rssBytes": 100040704,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76488,
+              "ppid": 76446,
+              "rssBytes": 122011648,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76487,
+              "ppid": 76446,
+              "rssBytes": 1764687872,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76485,
+              "ppid": 76446,
+              "rssBytes": 81379328,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76480,
+              "ppid": 76446,
+              "rssBytes": 104103936,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76479,
+              "ppid": 76446,
+              "rssBytes": 143310848,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "afterScroll": {
+          "rootPid": 76446,
+          "processCount": 7,
+          "rssBytes": 2696773632,
+          "processes": [
+            {
+              "pid": 76446,
+              "ppid": 76068,
+              "rssBytes": 192643072,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76494,
+              "ppid": 76446,
+              "rssBytes": 78905344,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76488,
+              "ppid": 76446,
+              "rssBytes": 99794944,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76487,
+              "ppid": 76446,
+              "rssBytes": 2064039936,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76485,
+              "ppid": 76446,
+              "rssBytes": 61751296,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76480,
+              "ppid": 76446,
+              "rssBytes": 86032384,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76479,
+              "ppid": 76446,
+              "rssBytes": 113606656,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        }
+      },
+      "pageMetrics": {
+        "initial": {
+          "Timestamp": 733814.798723,
+          "Documents": 1,
+          "Frames": 1,
+          "JSEventListeners": 303,
+          "Nodes": 228,
+          "LayoutCount": 15,
+          "RecalcStyleCount": 12,
+          "LayoutDuration": 0.109635,
+          "RecalcStyleDuration": 0.010033,
+          "ScriptDuration": 0.390641,
+          "TaskDuration": 1.927501,
+          "JSHeapUsedSize": 6729044,
+          "JSHeapTotalSize": 12845056
+        },
+        "afterScroll": {
+          "Timestamp": 733819.192978,
+          "Documents": 1,
+          "Frames": 1,
+          "JSEventListeners": 341,
+          "Nodes": 228,
+          "LayoutCount": 28,
+          "RecalcStyleCount": 15,
+          "LayoutDuration": 0.116533,
+          "RecalcStyleDuration": 0.010794,
+          "ScriptDuration": 0.440384,
+          "TaskDuration": 3.541465,
+          "JSHeapUsedSize": 7351780,
+          "JSHeapTotalSize": 12845056
+        }
+      },
+      "errors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ]
+    },
+    {
+      "run": 3,
+      "name": "Cleanup Only PDF.js",
+      "shortName": "cleanup-only",
+      "url": "http://127.0.0.1:3124/pdf-bench/cleanup-only?url=%2Fheavy-designer-portfolio-50p.pdf",
+      "firstCanvasPaint": 3122,
+      "paintTimedOut": false,
+      "initialPerf": {
+        "duration": 6127,
+        "blocking": 430,
+        "longTasks": 9,
+        "maxLongTask": 169,
+        "p95FrameGap": 75,
+        "maxFrameGap": 267,
+        "over32": 25,
+        "over50": 22,
+        "fcp": 248,
+        "domContentLoaded": 218,
+        "loadEventEnd": 342
+      },
+      "initial": {
+        "canvasCount": 50,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 49,
+        "createdCanvasCount": 50,
+        "totalCanvasPixels": 337500000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 330750000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 1350000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 1323000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 152,
+        "scrollHeight": 64430,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": null
+      },
+      "scroll": {
+        "duration": 4172,
+        "blocking": 60,
+        "longTasks": 6,
+        "p95FrameGap": 25,
+        "maxFrameGap": 76,
+        "over32": 15,
+        "over50": 4,
+        "peakCanvasPixels": 337500000,
+        "peakCanvasBytes": 1350000000
+      },
+      "afterScroll": {
+        "canvasCount": 50,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 49,
+        "createdCanvasCount": 50,
+        "totalCanvasPixels": 337500000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 330750000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 1350000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 1323000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 152,
+        "scrollHeight": 64430,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": null
+      },
+      "processMemory": {
+        "baseline": {
+          "rootPid": 76540,
+          "processCount": 6,
+          "rssBytes": 743374848,
+          "processes": [
+            {
+              "pid": 76540,
+              "ppid": 76068,
+              "rssBytes": 209190912,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76577,
+              "ppid": 76540,
+              "rssBytes": 121880576,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76576,
+              "ppid": 76540,
+              "rssBytes": 99975168,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76574,
+              "ppid": 76540,
+              "rssBytes": 80592896,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76573,
+              "ppid": 76540,
+              "rssBytes": 96780288,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76572,
+              "ppid": 76540,
+              "rssBytes": 134955008,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "initial": {
+          "rootPid": 76540,
+          "processCount": 7,
+          "rssBytes": 2549055488,
+          "processes": [
+            {
+              "pid": 76540,
+              "ppid": 76068,
+              "rssBytes": 235143168,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76585,
+              "ppid": 76540,
+              "rssBytes": 99926016,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76577,
+              "ppid": 76540,
+              "rssBytes": 122224640,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76576,
+              "ppid": 76540,
+              "rssBytes": 1763852288,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76574,
+              "ppid": 76540,
+              "rssBytes": 81248256,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76573,
+              "ppid": 76540,
+              "rssBytes": 103661568,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76572,
+              "ppid": 76540,
+              "rssBytes": 142999552,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "afterScroll": {
+          "rootPid": 76540,
+          "processCount": 7,
+          "rssBytes": 2915155968,
+          "processes": [
+            {
+              "pid": 76540,
+              "ppid": 76068,
+              "rssBytes": 204488704,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76585,
+              "ppid": 76540,
+              "rssBytes": 78807040,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76577,
+              "ppid": 76540,
+              "rssBytes": 99811328,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76576,
+              "ppid": 76540,
+              "rssBytes": 2269872128,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76574,
+              "ppid": 76540,
+              "rssBytes": 61734912,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76573,
+              "ppid": 76540,
+              "rssBytes": 85770240,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76572,
+              "ppid": 76540,
+              "rssBytes": 114671616,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        }
+      },
+      "pageMetrics": {
+        "initial": {
+          "Timestamp": 733827.30213,
+          "Documents": 1,
+          "Frames": 1,
+          "JSEventListeners": 305,
+          "Nodes": 228,
+          "LayoutCount": 16,
+          "RecalcStyleCount": 13,
+          "LayoutDuration": 0.111872,
+          "RecalcStyleDuration": 0.011972,
+          "ScriptDuration": 0.494088,
+          "TaskDuration": 2.041766,
+          "JSHeapUsedSize": 6929468,
+          "JSHeapTotalSize": 13893632
+        },
+        "afterScroll": {
+          "Timestamp": 733831.513075,
+          "Documents": 1,
+          "Frames": 1,
+          "JSEventListeners": 337,
+          "Nodes": 228,
+          "LayoutCount": 28,
+          "RecalcStyleCount": 14,
+          "LayoutDuration": 0.118235,
+          "RecalcStyleDuration": 0.012034,
+          "ScriptDuration": 0.537863,
+          "TaskDuration": 3.35322,
+          "JSHeapUsedSize": 7489336,
+          "JSHeapTotalSize": 13893632
+        }
+      },
+      "errors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ]
+    },
+    {
+      "run": 1,
+      "name": "Viewport Memory PDF.js",
+      "shortName": "viewport-memory",
+      "url": "http://127.0.0.1:3124/pdf-bench/viewport-memory?url=%2Fheavy-designer-portfolio-50p.pdf",
+      "firstCanvasPaint": 923,
+      "paintTimedOut": false,
+      "initialPerf": {
+        "duration": 3928,
+        "blocking": 253,
+        "longTasks": 4,
+        "maxLongTask": 165,
+        "p95FrameGap": 9,
+        "maxFrameGap": 158,
+        "over32": 7,
+        "over50": 5,
+        "fcp": 224,
+        "domContentLoaded": 83,
+        "loadEventEnd": 308
+      },
+      "initial": {
+        "canvasCount": 2,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 1,
+        "createdCanvasCount": 2,
+        "totalCanvasPixels": 13500000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 6750000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 54000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 27000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 104,
+        "scrollHeight": 64430,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": {
+          "observed": 50,
+          "entered": 2,
+          "exited": 48,
+          "renderStarted": 2,
+          "renderCompleted": 2,
+          "renderCancelled": 0,
+          "canvasReleased": 0,
+          "cleanupCalls": 2
+        }
+      },
+      "scroll": {
+        "duration": 4021,
+        "blocking": 0,
+        "longTasks": 0,
+        "p95FrameGap": 9,
+        "maxFrameGap": 9,
+        "over32": 0,
+        "over50": 0,
+        "peakCanvasPixels": 33750000,
+        "peakCanvasBytes": 135000000
+      },
+      "afterScroll": {
+        "canvasCount": 5,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 4,
+        "createdCanvasCount": 95,
+        "totalCanvasPixels": 33750000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 27000000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 135000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 108000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 107,
+        "scrollHeight": 64430,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": {
+          "observed": 50,
+          "entered": 98,
+          "exited": 144,
+          "renderStarted": 95,
+          "renderCompleted": 95,
+          "renderCancelled": 0,
+          "canvasReleased": 90,
+          "cleanupCalls": 95
+        }
+      },
+      "processMemory": {
+        "baseline": {
+          "rootPid": 76646,
+          "processCount": 7,
+          "rssBytes": 741916672,
+          "processes": [
+            {
+              "pid": 76646,
+              "ppid": 76068,
+              "rssBytes": 209534976,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76657,
+              "ppid": 76646,
+              "rssBytes": 121700352,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76656,
+              "ppid": 76646,
+              "rssBytes": 100073472,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76653,
+              "ppid": 76646,
+              "rssBytes": 0,
+              "command": "(Google Chrome He)"
+            },
+            {
+              "pid": 76652,
+              "ppid": 76646,
+              "rssBytes": 80592896,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76651,
+              "ppid": 76646,
+              "rssBytes": 94928896,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76650,
+              "ppid": 76646,
+              "rssBytes": 135086080,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "initial": {
+          "rootPid": 76646,
+          "processCount": 7,
+          "rssBytes": 1157136384,
+          "processes": [
+            {
+              "pid": 76646,
+              "ppid": 76068,
+              "rssBytes": 232423424,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76663,
+              "ppid": 76646,
+              "rssBytes": 100089856,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76657,
+              "ppid": 76646,
+              "rssBytes": 122109952,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76656,
+              "ppid": 76646,
+              "rssBytes": 379650048,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76652,
+              "ppid": 76646,
+              "rssBytes": 81264640,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76651,
+              "ppid": 76646,
+              "rssBytes": 103399424,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76650,
+              "ppid": 76646,
+              "rssBytes": 138199040,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "afterScroll": {
+          "rootPid": 76646,
+          "processCount": 7,
+          "rssBytes": 1039204352,
+          "processes": [
+            {
+              "pid": 76646,
+              "ppid": 76068,
+              "rssBytes": 237453312,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76663,
+              "ppid": 76646,
+              "rssBytes": 100040704,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76657,
+              "ppid": 76646,
+              "rssBytes": 122077184,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76656,
+              "ppid": 76646,
+              "rssBytes": 245563392,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76652,
+              "ppid": 76646,
+              "rssBytes": 81215488,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76651,
+              "ppid": 76646,
+              "rssBytes": 103841792,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76650,
+              "ppid": 76646,
+              "rssBytes": 149012480,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        }
+      },
+      "pageMetrics": {
+        "initial": {
+          "Timestamp": 733836.473591,
+          "Documents": 3,
+          "Frames": 1,
+          "JSEventListeners": 330,
+          "Nodes": 207,
+          "LayoutCount": 17,
+          "RecalcStyleCount": 9,
+          "LayoutDuration": 0.10529,
+          "RecalcStyleDuration": 0.011913,
+          "ScriptDuration": 0.309577,
+          "TaskDuration": 0.965452,
+          "JSHeapUsedSize": 5389280,
+          "JSHeapTotalSize": 7864320
+        },
+        "afterScroll": {
+          "Timestamp": 733840.53751,
+          "Documents": 1,
+          "Frames": 1,
+          "JSEventListeners": 297,
+          "Nodes": 196,
+          "LayoutCount": 81,
+          "RecalcStyleCount": 70,
+          "LayoutDuration": 0.134436,
+          "RecalcStyleDuration": 0.025696,
+          "ScriptDuration": 0.802162,
+          "TaskDuration": 2.016171,
+          "JSHeapUsedSize": 8294356,
+          "JSHeapTotalSize": 15204352
+        }
+      },
+      "errors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ]
+    },
+    {
+      "run": 2,
+      "name": "Viewport Memory PDF.js",
+      "shortName": "viewport-memory",
+      "url": "http://127.0.0.1:3124/pdf-bench/viewport-memory?url=%2Fheavy-designer-portfolio-50p.pdf",
+      "firstCanvasPaint": 856,
+      "paintTimedOut": false,
+      "initialPerf": {
+        "duration": 3864,
+        "blocking": 197,
+        "longTasks": 3,
+        "maxLongTask": 153,
+        "p95FrameGap": 9,
+        "maxFrameGap": 158,
+        "over32": 6,
+        "over50": 3,
+        "fcp": 220,
+        "domContentLoaded": 82,
+        "loadEventEnd": 303
+      },
+      "initial": {
+        "canvasCount": 2,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 1,
+        "createdCanvasCount": 2,
+        "totalCanvasPixels": 13500000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 6750000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 54000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 27000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 104,
+        "scrollHeight": 64430,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": {
+          "observed": 50,
+          "entered": 2,
+          "exited": 48,
+          "renderStarted": 2,
+          "renderCompleted": 2,
+          "renderCancelled": 0,
+          "canvasReleased": 0,
+          "cleanupCalls": 2
+        }
+      },
+      "scroll": {
+        "duration": 4023,
+        "blocking": 0,
+        "longTasks": 0,
+        "p95FrameGap": 9,
+        "maxFrameGap": 9,
+        "over32": 0,
+        "over50": 0,
+        "peakCanvasPixels": 33750000,
+        "peakCanvasBytes": 135000000
+      },
+      "afterScroll": {
+        "canvasCount": 5,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 4,
+        "createdCanvasCount": 95,
+        "totalCanvasPixels": 33750000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 27000000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 135000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 108000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 107,
+        "scrollHeight": 64430,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": {
+          "observed": 50,
+          "entered": 98,
+          "exited": 144,
+          "renderStarted": 95,
+          "renderCompleted": 95,
+          "renderCancelled": 0,
+          "canvasReleased": 90,
+          "cleanupCalls": 95
+        }
+      },
+      "processMemory": {
+        "baseline": {
+          "rootPid": 76711,
+          "processCount": 7,
+          "rssBytes": 744046592,
+          "processes": [
+            {
+              "pid": 76711,
+              "ppid": 76068,
+              "rssBytes": 209534976,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76748,
+              "ppid": 76711,
+              "rssBytes": 121683968,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76747,
+              "ppid": 76711,
+              "rssBytes": 100089856,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76744,
+              "ppid": 76711,
+              "rssBytes": 0,
+              "command": "(Google Chrome He)"
+            },
+            {
+              "pid": 76743,
+              "ppid": 76711,
+              "rssBytes": 82952192,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76742,
+              "ppid": 76711,
+              "rssBytes": 94994432,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76741,
+              "ppid": 76711,
+              "rssBytes": 134791168,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "initial": {
+          "rootPid": 76711,
+          "processCount": 7,
+          "rssBytes": 999866368,
+          "processes": [
+            {
+              "pid": 76711,
+              "ppid": 76068,
+              "rssBytes": 237453312,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76754,
+              "ppid": 76711,
+              "rssBytes": 99991552,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76748,
+              "ppid": 76711,
+              "rssBytes": 122109952,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76747,
+              "ppid": 76711,
+              "rssBytes": 213483520,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76743,
+              "ppid": 76711,
+              "rssBytes": 83640320,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76742,
+              "ppid": 76711,
+              "rssBytes": 104071168,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76741,
+              "ppid": 76711,
+              "rssBytes": 139116544,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "afterScroll": {
+          "rootPid": 76711,
+          "processCount": 7,
+          "rssBytes": 1038008320,
+          "processes": [
+            {
+              "pid": 76711,
+              "ppid": 76068,
+              "rssBytes": 237486080,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76754,
+              "ppid": 76711,
+              "rssBytes": 99942400,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76748,
+              "ppid": 76711,
+              "rssBytes": 122044416,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76747,
+              "ppid": 76711,
+              "rssBytes": 242728960,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76743,
+              "ppid": 76711,
+              "rssBytes": 83623936,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76742,
+              "ppid": 76711,
+              "rssBytes": 104054784,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76741,
+              "ppid": 76711,
+              "rssBytes": 148127744,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        }
+      },
+      "pageMetrics": {
+        "initial": {
+          "Timestamp": 733845.450581,
+          "Documents": 3,
+          "Frames": 1,
+          "JSEventListeners": 326,
+          "Nodes": 207,
+          "LayoutCount": 15,
+          "RecalcStyleCount": 8,
+          "LayoutDuration": 0.10026,
+          "RecalcStyleDuration": 0.011006,
+          "ScriptDuration": 0.299577,
+          "TaskDuration": 0.790032,
+          "JSHeapUsedSize": 5315908,
+          "JSHeapTotalSize": 7864320
+        },
+        "afterScroll": {
+          "Timestamp": 733849.515392,
+          "Documents": 1,
+          "Frames": 1,
+          "JSEventListeners": 297,
+          "Nodes": 196,
+          "LayoutCount": 78,
+          "RecalcStyleCount": 68,
+          "LayoutDuration": 0.129667,
+          "RecalcStyleDuration": 0.021928,
+          "ScriptDuration": 0.83801,
+          "TaskDuration": 1.971986,
+          "JSHeapUsedSize": 8366384,
+          "JSHeapTotalSize": 14417920
+        }
+      },
+      "errors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ]
+    },
+    {
+      "run": 3,
+      "name": "Viewport Memory PDF.js",
+      "shortName": "viewport-memory",
+      "url": "http://127.0.0.1:3124/pdf-bench/viewport-memory?url=%2Fheavy-designer-portfolio-50p.pdf",
+      "firstCanvasPaint": 935,
+      "paintTimedOut": false,
+      "initialPerf": {
+        "duration": 3940,
+        "blocking": 249,
+        "longTasks": 3,
+        "maxLongTask": 166,
+        "p95FrameGap": 9,
+        "maxFrameGap": 175,
+        "over32": 6,
+        "over50": 3,
+        "fcp": 336,
+        "domContentLoaded": 298,
+        "loadEventEnd": 427
+      },
+      "initial": {
+        "canvasCount": 2,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 1,
+        "createdCanvasCount": 2,
+        "totalCanvasPixels": 13500000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 6750000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 54000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 27000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 104,
+        "scrollHeight": 64430,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": {
+          "observed": 50,
+          "entered": 2,
+          "exited": 48,
+          "renderStarted": 2,
+          "renderCompleted": 2,
+          "renderCancelled": 0,
+          "canvasReleased": 0,
+          "cleanupCalls": 2
+        }
+      },
+      "scroll": {
+        "duration": 4014,
+        "blocking": 0,
+        "longTasks": 0,
+        "p95FrameGap": 9,
+        "maxFrameGap": 17,
+        "over32": 0,
+        "over50": 0,
+        "peakCanvasPixels": 33750000,
+        "peakCanvasBytes": 135000000
+      },
+      "afterScroll": {
+        "canvasCount": 5,
+        "visibleCanvasCount": 1,
+        "offscreenCanvasCount": 4,
+        "createdCanvasCount": 95,
+        "totalCanvasPixels": 33750000,
+        "visibleCanvasPixels": 6750000,
+        "offscreenCanvasPixels": 27000000,
+        "averageCanvasPixels": 6750000,
+        "maxCanvasPixels": 6750000,
+        "maxCanvasWidth": 2250,
+        "maxCanvasHeight": 3000,
+        "totalCanvasBytes": 135000000,
+        "visibleCanvasBytes": 27000000,
+        "offscreenCanvasBytes": 108000000,
+        "averageCanvasBytes": 27000000,
+        "domNodes": 107,
+        "scrollHeight": 64430,
+        "schedulerMetrics": null,
+        "renderTaskMetrics": null,
+        "viewportMemoryMetrics": {
+          "observed": 50,
+          "entered": 98,
+          "exited": 144,
+          "renderStarted": 95,
+          "renderCompleted": 95,
+          "renderCancelled": 0,
+          "canvasReleased": 90,
+          "cleanupCalls": 95
+        }
+      },
+      "processMemory": {
+        "baseline": {
+          "rootPid": 76785,
+          "processCount": 6,
+          "rssBytes": 740835328,
+          "processes": [
+            {
+              "pid": 76785,
+              "ppid": 76068,
+              "rssBytes": 207994880,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76822,
+              "ppid": 76785,
+              "rssBytes": 121896960,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76821,
+              "ppid": 76785,
+              "rssBytes": 100106240,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76817,
+              "ppid": 76785,
+              "rssBytes": 80642048,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76816,
+              "ppid": 76785,
+              "rssBytes": 95043584,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76815,
+              "ppid": 76785,
+              "rssBytes": 135151616,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "initial": {
+          "rootPid": 76785,
+          "processCount": 7,
+          "rssBytes": 991395840,
+          "processes": [
+            {
+              "pid": 76785,
+              "ppid": 76068,
+              "rssBytes": 230998016,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76829,
+              "ppid": 76785,
+              "rssBytes": 99975168,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76822,
+              "ppid": 76785,
+              "rssBytes": 122273792,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76821,
+              "ppid": 76785,
+              "rssBytes": 212631552,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76817,
+              "ppid": 76785,
+              "rssBytes": 81313792,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76816,
+              "ppid": 76785,
+              "rssBytes": 104251392,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76815,
+              "ppid": 76785,
+              "rssBytes": 139952128,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        },
+        "afterScroll": {
+          "rootPid": 76785,
+          "processCount": 7,
+          "rssBytes": 1036435456,
+          "processes": [
+            {
+              "pid": 76785,
+              "ppid": 76068,
+              "rssBytes": 235667456,
+              "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+            },
+            {
+              "pid": 76829,
+              "ppid": 76785,
+              "rssBytes": 99958784,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76822,
+              "ppid": 76785,
+              "rssBytes": 122208256,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76821,
+              "ppid": 76785,
+              "rssBytes": 243007488,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer)"
+            },
+            {
+              "pid": 76817,
+              "ppid": 76785,
+              "rssBytes": 81264640,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76816,
+              "ppid": 76785,
+              "rssBytes": 104284160,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            },
+            {
+              "pid": 76815,
+              "ppid": 76785,
+              "rssBytes": 150044672,
+              "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/150.0.7871.115/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper"
+            }
+          ]
+        }
+      },
+      "pageMetrics": {
+        "initial": {
+          "Timestamp": 733854.885129,
+          "Documents": 3,
+          "Frames": 1,
+          "JSEventListeners": 326,
+          "Nodes": 207,
+          "LayoutCount": 17,
+          "RecalcStyleCount": 9,
+          "LayoutDuration": 0.123501,
+          "RecalcStyleDuration": 0.010657,
+          "ScriptDuration": 0.333132,
+          "TaskDuration": 0.891685,
+          "JSHeapUsedSize": 5382192,
+          "JSHeapTotalSize": 7340032
+        },
+        "afterScroll": {
+          "Timestamp": 733858.938889,
+          "Documents": 1,
+          "Frames": 1,
+          "JSEventListeners": 299,
+          "Nodes": 193,
+          "LayoutCount": 82,
+          "RecalcStyleCount": 69,
+          "LayoutDuration": 0.154981,
+          "RecalcStyleDuration": 0.026082,
+          "ScriptDuration": 0.827999,
+          "TaskDuration": 1.952628,
+          "JSHeapUsedSize": 7373640,
+          "JSHeapTotalSize": 15204352
+        }
+      },
+      "errors": [
+        "Minified React error #418; visit https://react.dev/errors/418?args[]=text&args[]= for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+      ]
+    }
+  ]
+}

@@ -11,7 +11,8 @@
     "bench:webvitals": "node bench/bench-webvitals.js",
     "bench:scenario": "node bench/pdf-advanced-benchmark.js",
     "bench:longtask": "node bench/bench-pdfjs-longtasks.js",
-    "bench:firstpage": "node bench/pdf-firstpage-performance.js"
+    "bench:firstpage": "node bench/pdf-firstpage-performance.js",
+    "bench:pdf:deep-dive": "node bench/pdfjs-render-task-deep-dive.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
