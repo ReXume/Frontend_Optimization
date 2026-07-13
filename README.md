@@ -1,128 +1,201 @@
 # ReXume Frontend
 
-이력서와 디자이너 포트폴리오를 위한 고성능 PDF 뷰어. Next.js 기반.
+이력서와 포트폴리오 공유 및 AI 피드백을 위한 Next.js 기반 프론트엔드입니다. 현재 README는 PDF.js 결과 화면에서 발생한 **브라우저 메모리 압박 문제와 canvas backing store 회수 과정**을 중심으로 정리합니다.
 
-## 문제 발견
+이전 OffscreenCanvas Worker 중심 정리는 [README_OLD.md](./archive/README_OLD.md)에 보존했습니다.
 
-디자이너 포트폴리오 PDF(30-100페이지, 고해상도 이미지 포함)를 **모바일 환경**에서 렌더링 테스트하는 과정에서 심각한 성능 문제를 발견했다. PDF.js가 메인 스레드를 수백ms씩 점유하면서 스크롤, 버튼 클릭 등 모든 인터랙션이 먹통이 되는 현상이 반복됐다.
+## 문제 정의
 
-## 시도했던 접근들
+이력서 피드백 서비스에서는 업로드된 PDF를 결과 화면에서 다시 렌더링하고, 페이지 단위 좌표를 기준으로 피드백 영역을 표시해야 합니다. 특히 디자이너 포트폴리오처럼 페이지 수가 많고 렌더링 픽셀 크기가 큰 PDF에서는 전체 페이지를 한 번에 canvas로 유지할 경우 브라우저 탭 메모리 압박이 커집니다.
 
-### IntersectionObserver + requestAnimationFrame (v1-v12)
+배포 환경에서 50페이지 포트폴리오 PDF를 확인했을 때, 최적화 전 결과 화면은 Chrome 메모리 사용량이 약 `2.7GB`까지 증가했습니다. 화면 주변 페이지만 렌더링하고 LRU에서 밀린 canvas backing store를 회수한 뒤에는 동일 시나리오에서 약 `298MB` 수준으로 내려갔습니다.
 
-처음에는 메인 스레드 내에서 렌더링 효율을 개선하는 방향으로 접근했다:
-
-- **IntersectionObserver**: 뷰포트 밖 페이지의 렌더링을 제거하고, 75vh 프리워밍으로 스크롤 전 미리 렌더링
-- **requestAnimationFrame 배칭**: 렌더링 요청을 프레임 단위로 묶어 처리
-- **동시성 제한 (K=2,3,5,8,16)**: 동시 렌더링 페이지 수를 제한하여 프레임 드롭 감소
-- **RenderScheduler 우선순위 큐**: 뷰포트에 가까운 페이지를 먼저 렌더링
-
-이 접근들은 렌더링 순서와 타이밍을 최적화했지만, **근본적인 문제를 해결하지 못했다.** PDF 파싱과 캔버스 렌더링 자체가 메인 스레드에서 실행되는 한, 무거운 작업이 UI를 블로킹하는 구조는 바뀌지 않았다.
-
-### 벤치마크로 확인한 한계
-
-| 버전 | TBT | LongTask | maxDur |
-|------|-----|----------|--------|
-| Basic (최적화 없음) | **350ms** | 4개 | **251ms** |
-| IO + RAF (메인스레드 최적화) | **344ms** | 4개 | **267ms** |
-
-IO + RAF를 적용해도 TBT는 거의 변하지 않았다. 메인 스레드에서 아무리 스케줄링을 개선해도, 렌더링 작업 자체의 무게는 줄일 수 없었다.
-
-## 해결: OffscreenCanvas Worker (v13-v15)
-
-문제의 본질은 **렌더링 작업이 메인 스레드를 점유하는 것**이었다. 이를 근본적으로 해결하기 위해 PDF 파싱과 캔버스 렌더링을 Web Worker로 완전히 분리했다.
-
-```
-[메인 스레드]                    [Web Worker]
-   │                                │
-   ├─ UI 렌더링, 이벤트 처리        ├─ PDF.js 초기화 & 파싱
-   ├─ IntersectionObserver          ├─ OffscreenCanvas 렌더링
-   ├─ 스크롤, 클릭 응답             ├─ ImageBitmap 생성
-   │                                │
-   └──── transferable ◄────────────┘
-         (zero-copy GPU 전송)
+```text
+2.7GB -> 298MB
+약 89.0% 감소
+약 9.1배 적은 메모리 사용
 ```
 
-- PDF 파싱과 캔버스 렌더링이 Worker에서 실행되므로 메인 스레드가 블로킹되지 않음
-- `ImageBitmap`을 `transferable`로 전송하여 메모리 복사 없이 GPU에 직접 전달
-- `bitmaprenderer` 컨텍스트로 zero-copy 캔버스 출력
+Chrome Task Manager에서 단일 worker/process 기준으로도 메모리 차이를 확인했습니다.
 
-### 결과
-
-| 버전 | TBT | LongTask | maxDur |
-|------|-----|----------|--------|
-| Basic (최적화 없음) | 350ms | 4개 | 251ms |
-| IO + RAF (메인스레드 최적화) | 344ms | 4개 | 267ms |
-| **OffscreenCanvas Worker** | **129ms** | **3개** | **204ms** |
-
-**TBT 63% 감소** (350ms → 129ms). 메인 스레드 블로킹이 줄어 렌더링 중에도 UI 인터랙션이 끊기지 않는다.
-
-## Worker 환경에서의 브라우저 API 대응
-
-OffscreenCanvas Worker로 전환하면서 새로운 문제가 발생했다. Web Worker는 브라우저의 DOM API를 제공하지 않는데, PDF.js는 내부적으로 이를 참조한다. Worker 환경에서 PDF.js를 안정적으로 실행하기 위해 다음을 대응했다:
-
-| 문제 | 원인 | 해결 |
-|------|------|------|
-| `window is not defined` | PDF.js가 `window.location`으로 URL을 해석 | `self.window = self` 폴리필로 Worker의 location 활용 |
-| `document is not defined` | PDF.js가 내부적으로 DOM 요소 생성 시도 | 최소한의 fake document 폴리필 제공 |
-| 폰트 렌더링 깨짐 | Worker에는 CSS `@font-face` 주입 불가 | `disableFontFace: true`로 캔버스 기반 폰트 렌더링 전환 |
-| cMap/Font 경로 해석 실패 | Worker URL이 webpack chunk 경로라 상대경로 불일치 | `self.location.origin` 기반 절대 URL로 변환 |
-
-ES module의 `import`는 호이스팅되므로, 폴리필은 반드시 import 구문보다 먼저 실행되어야 한다. 이를 위해 폴리필 코드를 모듈 최상단에 배치했다.
-
-## 15회 실험 요약
-
-| 단계 | 최적화 기법 | 결과 |
-|------|------------|------|
-| v1-v3 | react-pdf 제거, pdfjs-dist 직접 사용 | 번들 크기 감소, 불필요한 추상화 제거 |
-| v4-v6 | IntersectionObserver + 뷰포트 기반 렌더링 | 화면 밖 페이지 렌더링 제거 |
-| v7-v9 | requestAnimationFrame 배칭 + 동시성 제한 (K=2,3,5,8,16) | 프레임 드롭 감소, K=3이 최적 |
-| v10-v12 | RenderScheduler 우선순위 큐 | 뷰포트 근접 페이지 우선 렌더링 |
-| v13 | 페이지 객체 캐싱 | getPage() 중복 호출 제거 |
-| v14 | Worker 전환 (canvas 렌더링 오프로드) | TBT 개선 시작 |
-| **v15** | **OffscreenCanvas + ImageBitmap transferable** | **TBT 63% 감소 달성** |
-
-## 아키텍처
-
+```text
+1,488,704K -> 295,700K
+약 80.1% 감소
+약 5.0배 적은 메모리 사용
 ```
-frontend/
-├── src/
-│   ├── app/
-│   │   ├── feedback/[id]/       # 실서비스 피드백 페이지
-│   │   ├── pdf-bench/           # 벤치마크용 각 버전 비교 페이지
-│   │   │   ├── basic/           # 베이스라인 (메인스레드)
-│   │   │   ├── simple-io/       # IO only
-│   │   │   └── opt15/           # OffscreenCanvas Worker (최종)
-│   │   └── api/                 # API 라우트 (cMap, Font, Worker 서빙)
-│   ├── components/
-│   │   ├── pdfOpt15-Worker/     # Worker 기반 PDF 뷰어 (최종)
-│   │   │   ├── PDFViewer.tsx    # 뷰어 컨테이너, Worker 관리
-│   │   │   ├── PDFPage.tsx      # 페이지 컴포넌트, bitmaprenderer
-│   │   │   └── pdf-render.worker.ts  # Web Worker (OffscreenCanvas + 폴리필)
-│   │   ├── pdfOptimized/        # RAF + 스케줄러 버전
-│   │   └── pdfOld/              # 기본 버전 (베이스라인)
-│   └── libs/
-│       └── renderScheduler.ts   # 우선순위 큐 + 동시성 제한
-├── bench/                       # Puppeteer 자동 벤치마크
-│   ├── pc-pages12-basic-vs-worker.js  # 메인 비교 벤치마크
-│   ├── tbt-*.js                 # TBT 측정
-│   ├── inp-*.js                 # INP(인터랙션 응답성) 측정
-│   └── results/                 # 벤치마크 결과 JSON
-└── public/
-    └── sample4.pdf              # 테스트용 대용량 포트폴리오 PDF
+
+기존 eager 렌더링 구조는 PDF 로드 직후 모든 페이지 컴포넌트를 생성하고, 각 페이지에서 `pdf.getPage()`와 `page.render()`를 실행합니다.
+
+```tsx
+{Array.from({ length: numPages }, (_, index) => (
+  <PDFPage key={index + 1} pdf={pdf} pageNumber={index + 1} />
+))}
 ```
+
+문제의 핵심은 PDF.js 자체가 느린 것이 아니라, **사용자가 동시에 볼 수 없는 페이지의 canvas backing store까지 계속 유지한다는 점**이었습니다.
+
+## 핵심 개념
+
+`<canvas>`는 화면에 보이는 CSS 크기와 별개로 실제 픽셀 데이터를 저장하는 내부 버퍼를 가집니다. 이를 canvas backing store로 볼 수 있습니다.
+
+예를 들어 PDF 원본 페이지가 `1125 x 1500pt`이고, 선명한 피드백 좌표 표시를 위해 PDF.js render scale 2로 렌더링하면 실제 canvas backing store는 `2250 x 3000`이 됩니다. 이때 RGBA 기준 픽셀 버퍼 추정값은 다음과 같습니다.
+
+```ts
+2250 * 3000 * 4 // 약 25.7MB
+```
+
+50페이지가 모두 canvas backing store를 유지하면 약 `1287.5MB` 수준의 canvas 픽셀 버퍼가 누적됩니다. 이 값은 Chrome 프로세스 전체 메모리가 아니라, `canvas.width * canvas.height * 4`로 계산한 상대 비교용 추정값입니다.
+
+실제 Chrome 메모리는 이 값보다 커질 수 있습니다. renderer/GPU 프로세스, 이미지 디코딩 버퍼, PDF.js 내부 캐시, 렌더링 임시 버퍼 등이 함께 잡히기 때문입니다. 그래서 이번 사례에서는 `2.7GB -> 298MB` 관측값을 대표 사용자 임팩트로 보고, canvas 픽셀 버퍼 추정값은 원인을 설명하는 보조 지표로 사용했습니다.
+
+## 개선 방향
+
+먼저 PDF.js lifecycle 정리만으로 문제가 해결되는지 확인하기 위해 `cleanup-only` 비교군을 만들었습니다.
+
+- `RenderTask.cancel()` 적용
+- `PDFPageProxy.cleanup()` 적용
+- eager 렌더링 유지
+- canvas `width` / `height` reset 없음
+
+그 결과 기본 cleanup만으로는 이미 렌더링된 canvas backing store가 줄지 않았습니다. 따라서 이 문제는 한 페이지 렌더링 비용을 줄이는 문제가 아니라, **동시에 유지하는 canvas 개수를 제한하는 문제**로 보는 것이 더 정확했습니다.
+
+최종 개선은 다음 방향으로 잡았습니다.
+
+- `IntersectionObserver`로 viewport 주변 페이지만 렌더링
+- 최근 본 페이지 최대 5개는 canvas backing store를 유지
+- LRU 캐시에서 밀린 화면 밖 페이지의 진행 중인 `RenderTask` 취소
+- LRU 캐시에서 밀린 canvas의 `width` / `height`를 `0`으로 reset
+- 순간 이동 시 현재 viewport 안의 페이지는 release하지 않도록 보호
+- LRU에서 밀린 페이지는 300ms grace period 후 reset해 짧은 되돌아가기 UX와 메모리 회수 균형 조정
+- `aspect-ratio` placeholder로 스크롤 높이와 layout shift 안정화
+
+핵심은 `page.cleanup()` 자체가 아니라, **전체 50페이지 canvas를 eager하게 유지하던 구조를 viewport 기반 windowing과 최근 5페이지 LRU 캐시 구조로 바꾼 것**입니다. 초기 진입에서는 viewport 주변 1~2페이지만 렌더링하고, 스크롤 중에는 최근 본 페이지를 최대 5개까지 유지한 뒤 캐시에서 밀린 canvas의 backing store를 비웠습니다.
+
+`canvas.width = 0`, `canvas.height = 0`은 메모리 회수에는 효과적이지만, 너무 공격적으로 실행하면 페이지 순간 이동이나 짧은 되돌아가기에서 재렌더링 지연이 생길 수 있습니다. 이를 막기 위해 현재 viewport/rootMargin 안에 있는 페이지는 release 대상에서 제외하고, LRU에서 밀린 페이지도 300ms 후에만 backing store를 비우도록 조정했습니다.
+
+## 구현 위치
+
+```text
+frontend/src/app/pdf-bench/
+├── basic/               # 전체 페이지 eager 렌더링 기준선
+├── cleanup-only/        # RenderTask.cancel + page.cleanup 비교군
+└── viewport-memory/     # viewport render + LRU canvas backing store release
+
+frontend/src/components/
+├── pdfCleanupOnly/      # cleanup-only 비교군
+└── pdfViewportMemory/   # 최종 메모리 개선 구현
+
+frontend/bench/
+└── pdfjs-render-task-deep-dive.js
+```
+
+메인 비교 페이지:
+
+- `/pdf-bench/basic?url=/heavy-designer-portfolio-50p.pdf`
+- `/pdf-bench/cleanup-only?url=/heavy-designer-portfolio-50p.pdf`
+- `/pdf-bench/viewport-memory?url=/heavy-designer-portfolio-50p.pdf`
+
+## 측정 결과
+
+### 대표 결과
+
+| 지표 | Basic eager PDF.js | Viewport Memory + LRU PDF.js | 변화 |
+| --- | ---: | ---: | ---: |
+| 배포 환경 Chrome 메모리 관측값 | 약 2.7GB | 약 298MB | 약 89.0% 감소 |
+| Chrome Task Manager 단일 worker/process | 1,488,704K | 295,700K | 약 80.1% 감소 |
+| 초기 canvas 픽셀 버퍼 추정값 | 1287.5MB | 51.5MB | 96.0% 감소 |
+| scroll 중 peak canvas 추정값 | 1287.5MB | 128.7MB | 90.0% 감소 |
+| Puppeteer Chrome RSS 초기 증가량 | +1516.2MB | +244.0MB | 83.9% 감소 |
+
+대표 성과는 TBT가 아니라 **PDF 결과 화면 하나가 수 GB 단위의 브라우저 메모리를 점유하던 문제를 완화한 것**입니다. `2.7GB -> 298MB`는 배포 환경에서 본 전체 Chrome 메모리 관측값이고, `1,488,704K -> 295,700K`는 Chrome Task Manager에서 확인한 단일 worker/process 기준 관측값입니다. TBT와 frame gap은 함께 개선된 보조 지표로 해석했습니다.
+
+측정 조건:
+
+- production build
+- `next start -p 3124`
+- 50페이지 포트폴리오형 PDF
+- PDF page size `1125 x 1500pt`
+- PDF.js render scale 2
+- CPU 4x throttling
+- 3회 반복 후 median 사용
+- Puppeteer 기반 자동 측정
+- 각 테스트마다 새 Chrome을 실행하고, Chrome 프로세스 트리 RSS를 baseline/초기/스크롤 후에 측정
+
+최신 결과 파일:
+
+- `frontend/bench/results/pdfjs-render-task-deep-dive-2026-07-13T01-47-52-791Z.json`
+
+### Canvas Memory
+
+| 버전 | 초기 canvas | 초기 offscreen canvas | 초기 canvas 추정값 | offscreen canvas 추정값 | peak canvas 추정값 |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Basic eager PDF.js | 50 | 49 | 1287.5MB | 1261.7MB | 1287.5MB |
+| Cleanup Only PDF.js | 50 | 49 | 1287.5MB | 1261.7MB | 1287.5MB |
+| Viewport Memory + LRU PDF.js | 2 | 1 | 51.5MB | 25.7MB | 128.7MB |
+
+정리하면 다음과 같습니다.
+
+- `page.cleanup()`만 추가한 Cleanup Only는 Basic과 거의 동일했습니다.
+- Viewport Memory + LRU는 초기 유지 canvas 수를 50개에서 2개로 줄였습니다.
+- 그 결과 초기 canvas 픽셀 버퍼 추정값은 `1287.5MB -> 51.5MB`가 되었습니다.
+- 감소폭 `96.0%`는 유지 canvas 수가 `50개 -> 2개`로 줄어든 결과입니다.
+- 스크롤 중에는 최근 본 페이지를 최대 5개까지 유지해 재방문 시 재렌더링 비용을 줄였고, peak canvas 추정값은 `128.7MB`로 측정되었습니다.
+
+### 초기 진입 성능과 프레임 안정성
+
+heavy PDF에서는 canvas backing store 수를 줄이면서 초기 진입 지표도 함께 개선되었습니다.
+
+| 버전 | 초기 TBT 추정 | FCP | First canvas paint | Scroll TBT |
+| --- | ---: | ---: | ---: | ---: |
+| Basic eager PDF.js | 463ms | 216ms | 3456ms | 0ms |
+| Cleanup Only PDF.js | 441ms | 248ms | 3122ms | 150ms |
+| Viewport Memory + LRU PDF.js | 249ms | 224ms | 923ms | 0ms |
+
+초기 프레임 안정성도 함께 개선되었습니다.
+
+| 지표 | Basic eager | Viewport Memory |
+| --- | ---: | ---: |
+| 초기 p95 frame gap | 108ms | 9ms |
+| 초기 32ms 초과 frame | 26개 | 6개 |
+| 스크롤 p95 frame gap | 9ms | 9ms |
+| 스크롤 32ms 초과 frame | 0개 | 0개 |
+
+따라서 내부 원인은 **동시에 유지하는 canvas backing store 수를 제한한 것**으로 정리합니다. 사용자 임팩트는 배포 환경 관측 기준 `2.7GB -> 298MB` 메모리 감소가 더 직접적입니다.
+
+### Chrome Process RSS
+
+canvas 픽셀 버퍼 추정값과 별도로, 각 벤치 run마다 새로 실행한 Chrome 프로세스 트리의 RSS도 측정했습니다. 이 값은 정확한 탭 단위 메모리는 아니며, renderer/GPU/utility 프로세스를 포함한 **테스트 Chrome 인스턴스의 실제 프로세스 메모리 근사값**입니다.
+
+| 버전 | 초기 Chrome RSS | 초기 RSS 증가량 | 스크롤 후 Chrome RSS | 스크롤 후 RSS 증가량 | JS heap |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Basic eager PDF.js | 2224.9MB | +1516.2MB | 2223.4MB | +1514.7MB | 7.3MB |
+| Cleanup Only PDF.js | 2431.0MB | +1722.0MB | 2780.1MB | +2071.2MB | 6.6MB |
+| Viewport Memory + LRU PDF.js | 953.5MB | +244.0MB | 989.9MB | +281.9MB | 5.1MB |
+
+Basic 대비 Viewport Memory + LRU의 Chrome RSS 증가량은 초기 기준 `1516.2MB -> 244.0MB`, 스크롤 후 기준 `1514.7MB -> 281.9MB`로 줄었습니다. JS heap은 세 버전 모두 작게 유지되어, 병목이 React 상태나 JS 객체보다 canvas/GPU 계층 리소스에 가깝다는 해석을 보조합니다.
+
+## 블로그 초안
+
+성능 개선 과정은 [PDF_CANVAS_MEMORY_BLOG.md](./PDF_CANVAS_MEMORY_BLOG.md)에 정리했습니다.
+
+핵심 문장:
+
+> PDF.js 기반 결과 화면에서 전체 50페이지 canvas를 eager하게 유지하던 구조를 viewport windowing과 최근 5페이지 LRU 캐시 방식으로 변경했습니다. LRU에서 밀린 canvas의 backing store를 reset해 배포 환경 기준 Chrome 메모리 사용량을 약 2.7GB에서 298MB로 낮췄습니다.
 
 ## 기술 스택
 
-- **Framework**: Next.js 15, React 19
-- **PDF 렌더링**: pdfjs-dist (직접 사용, react-pdf 미사용)
-- **멀티스레딩**: Web Worker + OffscreenCanvas + ImageBitmap transferable
-- **성능 측정**: Puppeteer (CPU throttle, Long Task 감지, Performance Timeline API)
-- **UI**: Tailwind CSS
-- **상태 관리**: Zustand
-- **데이터 페칭**: TanStack Query
+- Next.js 15
+- React 19
+- TypeScript
+- Tailwind CSS
+- Zustand
+- TanStack Query
+- pdfjs-dist
+- Puppeteer
 
 ## 실행
+
+Node.js는 Next.js 15 요구사항에 맞춰 `20+` 또는 로컬 Node 22 사용을 권장합니다.
 
 ```bash
 cd frontend
@@ -130,22 +203,23 @@ npm install
 npm run dev
 ```
 
-### 벤치마크
+프로덕션 빌드:
 
 ```bash
 cd frontend
-
-# 기본 (CPU 4x throttle, 5회)
-node bench/pc-pages12-basic-vs-worker.js
-
-# CPU 쓰로틀링 변경
-CPU_THROTTLE=6 node bench/pc-pages12-basic-vs-worker.js
-
-# TBT 비교
-node bench/tbt-basic-vs-worker.js
-
-# INP 측정
-node bench/inp-raf-batch.js
+npm run build
+npm run start -- -p 3124
 ```
 
-결과는 `bench/results/`에 JSON으로 저장된다.
+## 벤치마크
+
+```bash
+cd frontend
+RUNS=3 CPU_THROTTLE=4 BASE_URL=http://127.0.0.1:3124 PDF_URL=/heavy-designer-portfolio-50p.pdf node bench/pdfjs-render-task-deep-dive.js
+```
+
+벤치마크 결과는 `frontend/bench/results/`에 JSON으로 저장됩니다.
+
+## 이력서용 요약
+
+> PDF.js 기반 이력서/포트폴리오 결과 화면에서 전체 50페이지 canvas를 eager하게 유지해 Chrome 메모리 사용량이 약 2.7GB까지 증가하는 문제를 확인했습니다. `RenderTask.cancel()`과 `page.cleanup()`만 적용한 비교군으로 기본 cleanup의 한계를 확인한 뒤, `IntersectionObserver` 기반 viewport windowing, 최근 5페이지 LRU 캐시, canvas size reset을 적용해 동일 시나리오의 Chrome 메모리 사용량을 약 298MB 수준으로 낮췄습니다. 단일 worker/process 기준으로도 1,488,704K에서 295,700K로 감소한 것을 확인했고, 현재 viewport 페이지 release 방지와 300ms grace period로 순간 이동/되돌아가기 UX 저하를 완화했습니다.
