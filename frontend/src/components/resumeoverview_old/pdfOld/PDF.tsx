@@ -1,12 +1,14 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, { useCallback, useState, useRef, useEffect } from "react";
 import CommentForm from "../../comment_old/CommentForm";
 import { FeedbackPoint } from "@/types/FeedbackPointType";
 
-import { GlobalWorkerOptions, getDocument, type PDFPageProxy, type PDFDocumentProxy, RenderTask } from "pdfjs-dist";
+import type { PDFPageProxy, PDFDocumentProxy, RenderTask } from "pdfjs-dist";
 
 
+const PAGE_RATIO = 1.414;
+const RENDER_SCALE = 2;
 
 interface PDFProps {
   pdf: PDFDocumentProxy;
@@ -38,8 +40,35 @@ const PDF: React.FC<PDFProps> = ({
   // setHoveredCommentId,
   // setClickedCommentId,
 }) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const renderTaskRef = useRef<RenderTask | null>(null);
+
+  const handleCanvasRef = useCallback((canvas: HTMLCanvasElement | null) => {
+    const previousCanvas = canvasRef.current;
+    if (previousCanvas && previousCanvas !== canvas) {
+      previousCanvas.width = 0;
+      previousCanvas.height = 0;
+    }
+    canvasRef.current = canvas;
+  }, []);
+
+  const releaseCanvas = useCallback(() => {
+    const renderTask = renderTaskRef.current;
+    renderTaskRef.current = null;
+    if (renderTask) {
+      try {
+        renderTask.cancel();
+      } catch {
+        // ignore cancel error
+      }
+    }
+
+    const canvas = canvasRef.current;
+    if (canvas) {
+      canvas.width = 0;
+      canvas.height = 0;
+    }
+  }, []);
 
   const [selectedArea, setSelectedArea] = useState<{
     x: number;
@@ -66,28 +95,35 @@ const PDF: React.FC<PDFProps> = ({
     const loadPage = async () => {
       const t0 = performance.now();
       console.log(`PDF 렌더링 시작 (페이지 ${pageNumber}): 0.00초`);
-      
-      const page = await pdf.getPage(pageNumber);
-      const t1 = performance.now();
-      
-      const viewport = page.getViewport({ scale: 2, rotation: 0 });
-      const canvas = canvasRef.current!;
-      const context = canvas.getContext("2d")!;
 
-      canvas.width = viewport.width;
-      canvas.height = viewport.height;
-
-      if (renderTaskRef.current) {
-        renderTaskRef.current.cancel();
-      }
-
-      renderTaskRef.current = page.render({
-        canvasContext: context,
-        viewport,
-      });
+      let page: PDFPageProxy | null = null;
+      let task: RenderTask | null = null;
 
       try {
-        await renderTaskRef.current.promise;
+        page = await pdf.getPage(pageNumber);
+        const t1 = performance.now();
+
+        if (cancelled || !canvasRef.current) return;
+
+        const viewport = page.getViewport({ scale: RENDER_SCALE, rotation: 0 });
+        const canvas = canvasRef.current;
+        const context = canvas.getContext("2d");
+        if (!context) return;
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        if (renderTaskRef.current) {
+          renderTaskRef.current.cancel();
+        }
+
+        task = page.render({
+          canvasContext: context,
+          viewport,
+        });
+        renderTaskRef.current = task;
+
+        await task.promise;
         const t2 = performance.now();
         
         if (cancelled) return;
@@ -102,12 +138,29 @@ const PDF: React.FC<PDFProps> = ({
         console.log(`[pdfOld] 페이지 ${pageNumber} 렌더링 완료: ${metrics.totalMs.toFixed(1)}ms`);
         
         // 벤치마크 메트릭 수집기에 전달
-        if (typeof window !== 'undefined' && (window as any).pdfRenderMetricsCollector) {
-          (window as any).pdfRenderMetricsCollector.add(metrics);
+        if (typeof window !== "undefined") {
+          const metricsCollector = (
+            window as Window & {
+              pdfRenderMetricsCollector?: { add: (value: typeof metrics) => void };
+            }
+          ).pdfRenderMetricsCollector;
+          metricsCollector?.add(metrics);
         }
       } catch (err: unknown) {
-        if (err instanceof Error && err.name !== "RenderingCancelledException") {
+        if (!cancelled && err instanceof Error && err.name !== "RenderingCancelledException") {
           console.error("PDF 렌더링 에러:", err);
+        }
+      } finally {
+        if (renderTaskRef.current === task) {
+          renderTaskRef.current = null;
+        }
+
+        if (page) {
+          try {
+            page.cleanup();
+          } catch {
+            // ignore cleanup error
+          }
         }
       }
     };
@@ -116,11 +169,9 @@ const PDF: React.FC<PDFProps> = ({
 
     return () => {
       cancelled = true;
-      if (renderTaskRef.current) {
-        renderTaskRef.current.cancel();
-      }
+      releaseCanvas();
     };
-  }, [pdf, pageNumber]);
+  }, [pdf, pageNumber, releaseCanvas]);
 
   // hover 핸들러 캡슐화: 콘솔 로그로 확인
   // const handleHover = (id: number | null) => {
@@ -185,13 +236,22 @@ const PDF: React.FC<PDFProps> = ({
 
   return (
     <div
-      style={{ position: "relative", marginBottom: 20 }}
+      style={{
+        position: "relative",
+        margin: "0 auto 16px",
+        maxWidth: 900,
+        aspectRatio: `1 / ${PAGE_RATIO}`,
+        background: "#f3f4f6",
+      }}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
     >
       {/* 캔버스 표시 */}
-      <canvas ref={canvasRef} style={{ display: "block" }} />
+      <canvas
+        ref={handleCanvasRef}
+        style={{ display: "block", width: "100%", height: "100%" }}
+      />
       {/* 캔버스 표시 */}
 
 

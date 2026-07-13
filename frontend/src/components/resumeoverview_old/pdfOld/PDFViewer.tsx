@@ -43,11 +43,15 @@ const PDFViewer = ({
   const [pdf, setPdf] = useState<PDFDocumentProxy | null>(null);
   const [numPages, setNumPages] = useState(0);
   const [err, setErr] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     let cancelled = false;
-    setLoading(true);
+    let task: ReturnType<typeof getDocument> | null = null;
+    let loadedDoc: PDFDocumentProxy | null = null;
+
+    setErr(null);
+    setPdf(null);
+    setNumPages(0);
 
     (async () => {
       if (!pdfSrc || typeof pdfSrc !== "string" || !pdfSrc.trim()) {
@@ -55,12 +59,18 @@ const PDFViewer = ({
         return;
       }
       try {
-        const task = getDocument({ url: pdfSrc });
+        task = getDocument({ url: pdfSrc });
         const loaded = await task.promise;
-        if (cancelled) return;
+        loadedDoc = loaded;
+
+        if (cancelled) {
+          await loaded.destroy();
+          return;
+        }
+
         setPdf(loaded);
         setNumPages(loaded.numPages);
-      } catch (e: any) {
+      } catch (e: unknown) {
         if (cancelled) return;
         console.error("Failed to load PDF:", e);
         setErr("PDF 로딩에 실패했습니다.");
@@ -69,8 +79,12 @@ const PDFViewer = ({
 
     return () => {
       cancelled = true;
-      setLoading(false);
+      if (loadedDoc) {
+        void loadedDoc.destroy().catch(() => {});
+        return;
+      }
 
+      void task?.destroy().catch(() => {});
     };
   }, [pdfSrc]);
 
@@ -82,7 +96,7 @@ const PDFViewer = ({
   return (
     <div
       style={{
-        maxWidth: 1200,
+        maxWidth: 900,
         width: "100%",
         margin: "0 auto",
         overflowY: "auto",
